@@ -55,4 +55,5 @@ declare namespace emitListenner {
         trigger(name: string, args: any): void;
     }
 }
-export default emitListenner
+export default emitListenner;
+export const EventEmitter:emitListenner.EventEmitter;
