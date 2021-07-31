@@ -10,9 +10,11 @@ function getListennerEntry(key: string, handler: IListenner, once = false):IList
         once
     }
 } 
-function getDetailFromArgs(args: any): handlerArg {
+function getDetail(args: any, name: string): handlerArg {
     return {
-        detail: args
+        detail: args,
+        type: name,
+        timestamp: +new Date(),
     }
 }
 /**
@@ -96,6 +98,10 @@ class EventEmitter {
         const eventKey = getKey(name)
         const entries = this.#listennersMap.get(eventKey)
         if(!entries || entries.length===0) return false;
+        // handler may be a reference
+        const hasHandlerRef = entries.findIndex(entry=>entry.handler===handler)!==-1
+        if(hasHandlerRef) return true;
+        // not a same reference but has same function body
         const handlerKey = getKey(handler.toString())
         return entries.findIndex(entry=>entry.key===handlerKey)!==-1
     }
@@ -119,7 +125,7 @@ class EventEmitter {
         const eventKey = getKey(name)
         const entries = this.#listennersMap.get(eventKey)
         entries.forEach(entry=>{
-            entry.handler(getDetailFromArgs(args))
+            entry.handler(getDetail(args, name))
             if(entry.once) {
                 this.#listennersMap.delete(eventKey)
             }

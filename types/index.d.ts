@@ -1,5 +1,8 @@
 export interface handlerArg {
     detail: any;
+    /**event type */
+    type: string;
+    timestamp: number;
 }
 export type IListennerEntry = {
     /**handler key */
