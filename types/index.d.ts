@@ -40,6 +40,10 @@ declare namespace emitListenner {
          */
         on(name: string, handler: IListenner): void;
         /**
+         * @alias EventEmitter#addListenner
+         */
+        off(name: string, handler?: IListenner): void;
+        /**
          * register a listenner for certain specified event, but just only effects one time
          * @alias EventEmitter#addListenner
          */
@@ -49,7 +53,7 @@ declare namespace emitListenner {
          * remove all registered events and its listenners
          */
         removeAllListenners():void;
-        hasListenner(name: string, handler?: IListenner): boolean;
+        hasListenner(name: string, handler: IListenner): boolean;
         /**
          * get count of listenners of specified event 
          * @param name event name

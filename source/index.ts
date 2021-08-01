@@ -64,6 +64,12 @@ export class EventEmitter {
         this.addListenner(name, handler)
     }
     /**
+     * @alias EventEmitter#removeListenner
+     */
+    off(name: string, handler?: IListenner): void {
+        this.removeListenner(name, handler)
+    }
+    /**
      * register a listenner for certain specified event, but just only effects one time     
      * **Note**: Register a same event continuously for the same time, and the latter will overwrite the former
      * @alias EventEmitter#addListenner

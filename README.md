@@ -59,6 +59,10 @@ Register multiple events at once. the `events` is an array of structure like bel
 }
 ```
 
+#### EventEmitter#off(name, handler?)
+
+Alias of `EventEmitter#removeListenner`
+
 #### EventEmitter#on(name, handler)
 
 Alias of `EventEmitter#addListenner`
