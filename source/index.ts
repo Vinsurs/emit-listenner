@@ -20,7 +20,7 @@ function getDetail(args: any, name: string): IHandlerArg {
 /**
  * @class emitListenner.EventEmitter
  */
-class EventEmitter {
+export class EventEmitter {
     #listennersMap: IListennerMap
     constructor() {
         this.#listennersMap = new Map<string, IListennerEntry[]>()
@@ -46,7 +46,7 @@ class EventEmitter {
      * @param events event entry array
      * - `events[number]#name` event name
      * - `events[number]#handler` it will be called when event is triggered
-     * - `events[number]#handler` same as `emitListenner.EventEmitter#once`
+     * - `events[number]#once` same as `emitListenner.EventEmitter#once`
      */
     addListenners(events: {name: string, handler: IListenner, once?: boolean}[]): void {
         events.forEach(ev=>{
@@ -120,7 +120,7 @@ class EventEmitter {
      */
     emit(name: string, args: any): void {
         if(this.listennerCount(name)===0) {
-            throw new Error(`The event '${name}' had been not registered, please sure register it before emitting it.`)
+            throw new Error(`The event '${name}' is not registered, please sure register it before emitting it.`)
         }
         const eventKey = getKey(name)
         const entries = this.#listennersMap.get(eventKey)

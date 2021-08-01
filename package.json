@@ -1,15 +1,12 @@
 {
   "name": "emit-listenner",
-  "version": "0.1.5",
-  "main": "./dist",
-  "exports": "./dist",
+  "version": "0.1.6",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
   "type": "module",
   "license": "MIT",
   "dependencies": {
-    "del-cli": "^4.0.1",
-    "np": "^7.5.0",
-    "spark-md5": "^3.0.1",
-    "typescript": "^4.3.5"
+    "spark-md5": "^3.0.1"
   },
   "files": [
     "dist",
@@ -26,7 +23,10 @@
   },
   "types": "./types/index.d.ts",
   "devDependencies": {
-    "@types/spark-md5": "^3.0.2"
+    "@types/spark-md5": "^3.0.2",
+    "del-cli": "^4.0.1",
+    "np": "^7.5.0",
+    "typescript": "^4.3.5"
   },
   "description": "slim EventEmitter implementation",
   "keywords": [
@@ -41,5 +41,9 @@
     "email": "2407232109@qq.com",
     "name": "vinsurs",
     "url": "https://github.com/Vinsurs/emit-listenner#readme"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vinsurs/emit-listenner"
   }
 }

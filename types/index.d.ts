@@ -28,6 +28,14 @@ declare namespace emitListenner {
          */
         addListenner(name: string, handler: IListenner): void;
         /**
+         * Register multiple events at once
+         * @param events event entry array
+         * - `events[number]#name` event name
+         * - `events[number]#handler` it will be called when event is triggered
+         * - `events[number]#once` same as `emitListenner.EventEmitter#once`
+         */
+        addListenners(events: {name: string, handler: IListenner, once?: boolean}[]): void;
+        /**
          * @alias EventEmitter#addListenner
          */
         on(name: string, handler: IListenner): void;

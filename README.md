@@ -1,6 +1,6 @@
 # emit-listenner
 
-emit-listenner is a slim EventEmitter implementation.
+emit-listenner is a slim EventEmitter implementation based on ESM.
 
 NOTE: Please ensure your nodejs version is great than **12.17**!
 
@@ -16,6 +16,7 @@ npm install --save emit-listenner
 ### Normal usage
 
 ```js
+// foo.js
 import emitListenner from 'emit-listenner'
 const event = new emitListenner.EventEmitter()
 event.addListenner("eventname", callback);        // register a listenner
@@ -23,7 +24,21 @@ event.emit("eventname", {
     a: 'some args'
 });  // emit event
 ```
-
+`emit-listenner` is a module based on ES-module, if you want use it in Nodejs with CommonJS pattern, you can use dynamic `import` expression that is a nodejs new feature that used to import ES module in Commonjs module. But if you do this, make sure your nodejs version is great than v12.13!
+```js
+// foo.cjs
+(async ()=>{
+    const { EventEmitter } = await import('emit-listenner')
+    const ev = new EventEmitter()
+    ev.addListenners([
+        {
+            name: "change",
+            handler: args=>console.log(args),
+            once: true
+        }
+    ])
+})
+``` 
 ## Documentation
 
 
