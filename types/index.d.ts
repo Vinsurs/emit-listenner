@@ -1,21 +1,22 @@
-export interface handlerArg {
-    detail: any;
-    /**event type */
-    type: string;
-    timestamp: number;
-}
-export type IListennerEntry = {
-    /**handler key */
-    key: string;
-    handler: IListenner;
-    once: boolean;
-}
-export type IListennerMap = Map<string, IListennerEntry[]>;
-export interface IListenner {
-    (ev: handlerArg): any;
-}
 declare namespace emitListenner {
-    export class EventEmitter {
+    interface IHandlerArg {
+        detail: any;
+        /**event type */
+        type: string;
+        timestamp: number;
+    }
+    type IListennerEntry = {
+        /**handler key */
+        key: string;
+        handler: IListenner;
+        once: boolean;
+    }
+    type IListennerMap = Map<string, IListennerEntry[]>;
+    interface IListenner {
+        (ev: IHandlerArg): any;
+    }
+    class EventEmitter {
+        constructor();
         /**
          * @private
          */
@@ -58,5 +59,4 @@ declare namespace emitListenner {
         trigger(name: string, args: any): void;
     }
 }
-export default emitListenner;
-export const EventEmitter:emitListenner.EventEmitter;
+export = emitListenner;

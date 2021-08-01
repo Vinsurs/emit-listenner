@@ -1,4 +1,4 @@
-import { IListenner, IListennerEntry, IListennerMap, handlerArg } from '../types/index'
+import { IListenner, IListennerEntry, IListennerMap, IHandlerArg } from '../types/index'
 import SparkMD5 from 'spark-md5'
 function getKey(str: string, prefix = 'm'): string {
     return prefix + SparkMD5.hash(str)
@@ -10,7 +10,7 @@ function getListennerEntry(key: string, handler: IListenner, once = false):IList
         once
     }
 } 
-function getDetail(args: any, name: string): handlerArg {
+function getDetail(args: any, name: string): IHandlerArg {
     return {
         detail: args,
         type: name,
